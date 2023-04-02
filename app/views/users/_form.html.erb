@@ -1,0 +1,33 @@
+<%= render 'shared/errors', object: @user %>
+
+<%= form_with model: @user, data: { turbo: false }, class: "card card-md", autoload: false do |f| %>
+  <div class="card-body">
+    <h2 class="card-title text-center mb-4">Create new account</h2>
+    <div class="mb-3">
+      <%= f.label :name, class: 'form-label' %>
+      <%= f.text_field :name, placeholder: 'Name', class: f.object.errors[:name].any? ? 'form-control is-invalid' : 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.email_field :email, placeholder: 'E-mail', class: f.object.errors[:email].any? ? 'form-control is-invalid' : 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password, class: 'form-label' %>
+      <div class="input-group input-group-flat">
+        <%= f.password_field :password, class: f.object.errors[:password].any? ? 'form-control is-invalid' : 'form-control' %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password_confirmation, class: 'form-label' %>
+      <div class="input-group input-group-flat">
+        <%= f.password_field :password_confirmation, class: f.object.errors[:password_confirmation].any? ? 'form-control is-invalid' : 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-footer">
+      <%= f.submit "Create new account", class: 'btn btn-primary w-100'%>
+    </div>
+  </div>
+<% end %>

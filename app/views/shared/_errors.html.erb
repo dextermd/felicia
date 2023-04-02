@@ -1,0 +1,15 @@
+<% if object.errors.full_messages.any? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <div class="d-flex">
+      <div>
+        <ul class="alert-title">
+          <% object.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+  </div>
+<% end %>

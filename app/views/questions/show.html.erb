@@ -1,0 +1,32 @@
+<% provide :page_title %>
+<% currently_at  %>
+
+<h1 class="mb-4"><%= @question.title %></h1>
+
+
+  <time datetime="<%=  @question.formatted_created_at %>">
+    <%= @question.formatted_created_at %>
+  </time>
+
+  <p class="lead my-3">
+  <%= sanitize @question.body %>
+  </p>
+
+<%= link_to 'Show', question_path(@question), class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-secondary' %>
+<%= link_to 'Delete', question_path(@question),  class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+
+<hr class="my-3">
+
+<h2> Write your answer</h2>
+
+<%= render 'answers/form' %>
+
+<h2 class="mt-5">Answers</h2>
+
+
+<%= render partial: 'answers/answer', collection: @answers,
+           as: :answer, locals: {question: @question}
+%>
+
+<%== pagy_bootstrap_nav @pagy %>

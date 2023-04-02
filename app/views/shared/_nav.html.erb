@@ -1,0 +1,26 @@
+<%= provide :main_nav do %>
+  <header class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <div class="navbar navbar-light">
+        <div class="container-xl">
+          <ul class="navbar-nav">
+
+            <li class="nav-item <%= 'active' if current_page?if current_page?(controller: 'pages') %>">
+                    <span class="nav-link-title">
+                      <%= link_to 'Home', root_path, class: 'nav-link'%>
+                    </span>
+            </li>
+
+
+            <li class="nav-item <%= 'active' if current_page?if current_page?(controller: 'questions') %>" >
+                    <span class="nav-item nav-link-title">
+                      <%= link_to 'Questions', questions_path, class: 'nav-link'%>
+                    </span>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+<% end %>
