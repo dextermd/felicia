@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # http://127.0.0.1:3000//rails/info/routes
+
+  resources :sessions, only: %i[new create destroy]
+
   resources :users, only: %i[new create]
+
   resources :questions do
     resources :answers, except: %i[new show] # except это кроме тек которые мы укажем # делаем это в :questions так как :questions содержат в себе :answers
   end

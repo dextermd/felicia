@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   before_action :get_question!, only: %i[show destroy edit update]
   def index
     @pagy, @questions = pagy Question.order(created_at: :desc)
+    @questions = @questions.decorate
   end
 
   def new
@@ -36,8 +37,10 @@ class QuestionsController < ApplicationController
 
   def show
     # работает before_action с Question.find_by id: params[:id]
+    @question = @question.decorate
     @answer = @question.answers.build
-    @pagy, @answers = pagy Answer.where(question_id: @question.id).order created_at: :desc # или так @question.answers.order created_at: :desc
+    @pagy, @answers = pagy Answer.where(question_id: @question.id).order(created_at: :desc) # или так @question.answers.order created_at: :desc
+    @answers = @answers.decorate
   end
   def destroy
     # работает before_action с Question.find_by id: params[:id]
