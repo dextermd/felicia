@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_auth_false
   def new
     @user = User.new
   end

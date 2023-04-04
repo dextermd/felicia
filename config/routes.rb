@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # http://127.0.0.1:3000//rails/info/routes
 
-  resources :sessions, only: %i[new create destroy]
+  resource :session, only: %i[new create destroy] # Убрали s  в конце  для того чтобы от нас не требовали id в маршруте
 
   resources :users, only: %i[new create]
 

@@ -1,7 +1,7 @@
 
-<%= form_with url: sessions_path, data: { turbo: false }, class: "card card-md", autoload: false do |f| %>
+<%= form_with url: session_path, data: { turbo: false }, class: "card card-md", autoload: false do |f| %>
   <div class="card-body">
-    <h2 class="card-title text-center mb-4">Create new account</h2>
+    <h2 class="card-title text-center mb-4">Sign in</h2>
 
     <div class="mb-3">
       <%= f.label :email, class: 'form-label' %>

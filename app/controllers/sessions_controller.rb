@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    before_action :require_auth_false, only: %i[new create]
+    before_action :require_auth_true, only: %i[destroy]
     def new
     end
 
@@ -15,6 +17,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        
+        sign_out
+        flash[:success] = "See you later!"
+        redirect_to root_path
     end
   end

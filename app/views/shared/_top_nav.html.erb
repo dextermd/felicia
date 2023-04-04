@@ -13,36 +13,25 @@
       </h1>
 
       <div class="navbar-nav flex-row order-md-last">
-        <div class="nav-item d-none d-md-flex me-3">
-          <div class="btn-list">
-            <a href="" class="btn" target="_blank" rel="noreferrer">
-              <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
-              Donate
-            </a>
-          </div>
-        </div>
-
-        <div class="d-none d-md-flex">
-        </div>
 
 
+        <% if user_signed_in? %>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
               <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
               <div class="d-none d-xl-block ps-2">
-                <div><%= user_signed_in? ? current_user.name_or_email : '' %></div>
-                <div class="mt-1 small text-muted"><%= user_signed_in? ? current_user.email : '' %></div>
+                <div><%= current_user.name_or_email%></div>
+                <div class="mt-1 small text-muted"><%= current_user.email %></div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
               <a href="" class="dropdown-item">Status</a>
               <div class="dropdown-divider"></div>
               <a href="" class="dropdown-item">Settings</a>
-              <a href="" class="dropdown-item">Logout</a>
+              <%= link_to 'Log Out', session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </div>
-
+        <% end %>
 
       </div>
     </div>
