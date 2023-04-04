@@ -192,6 +192,9 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
+    valid_email2 (4.0.6)
+      activemodel (>= 3.2)
+      mail (~> 2.5)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -223,6 +226,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  valid_email2 (~> 4.0.6)
   web-console
 
 RUBY VERSION

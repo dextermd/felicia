@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
-  before_action :require_auth_false
+  before_action :require_auth_false, only: %i[new create]
+  before_action :require_auth_true, only: %i[edit update]
+  before_action :set_user!, only: %i[edit update]
+  def edit
+  end
+
+  def update
+    if @user.update user_params
+      flash[:success] = "You profile was successfully updated!"
+      redirect_to edit_user_path(@user)
+    else
+      render :edit
+    end
+  end
   def new
     @user = User.new
   end
@@ -16,8 +29,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user!
+    @user = User.find(params[:id])
+  end
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmaton)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :old_password)
   end
 
 end

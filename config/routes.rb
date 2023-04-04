@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :session, only: %i[new create destroy] # Убрали s  в конце  для того чтобы от нас не требовали id в маршруте
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create edit update]
 
   resources :questions do
     resources :answers, except: %i[new show] # except это кроме тек которые мы укажем # делаем это в :questions так как :questions содержат в себе :answers
